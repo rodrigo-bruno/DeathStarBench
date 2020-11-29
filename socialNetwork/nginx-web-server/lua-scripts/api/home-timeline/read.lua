@@ -106,7 +106,7 @@ function _M.ReadHomeTimeline()
     
   else
     local client = GenericObjectPool:connection(
-        HomeTimelineServiceClient, "home-timeline-service", 9090)
+        HomeTimelineServiceClient, "172.18.0.1", 10010)
     local status, ret = pcall(client.ReadHomeTimeline, client, req_id,
         user_id, tonumber(args.start), tonumber(args.stop), carrier)
     GenericObjectPool:returnConnection(client)
