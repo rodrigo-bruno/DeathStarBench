@@ -1,18 +1,6 @@
 #!/bin/bash
-backend=localhost
 
-SocialGraphService=localhost
-WriteHomeTimelineService=localhost
-ComposePostService=localhost
-PostStorageService=localhost
-UserTimelineService=localhost
-UrlShortenService=localhost
-UserService=localhost
-MediaService=localhost
-TextService=localhost
-UniqueIdService=localhost
-UserMentionService=localhost
-HomeTimelineService=localhost
+source deployment
 
 sed -i 's/#JAEGER#/'$backend'/g' config/jaeger-config.yml
 sed -i 's/#SOCIAL-GRAPH-SERVICE#/'$SocialGraphService'/g' config/service-config.json
