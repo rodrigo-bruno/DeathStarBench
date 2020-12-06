@@ -23,7 +23,7 @@ function _M.Follow()
   local post = ngx.req.get_post_args()
 
   local client = GenericObjectPool:connection(
-      SocialGraphServiceClient, "172.18.0.1", 10000)
+      SocialGraphServiceClient, "#SOCIAL-GRAPH-SERVICE#", 10000)
 
   local status
   local err

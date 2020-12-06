@@ -3,7 +3,7 @@
   "diabled": false,
   "reporter": {
     "logSpans": true,
-    "localAgentHostPort": "172.18.0.1:6831"
+    "localAgentHostPort": "#JAEGER#:6831"
   },
   "sampler": {
     "type": "const",

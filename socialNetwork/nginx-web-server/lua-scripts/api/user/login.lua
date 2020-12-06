@@ -33,7 +33,7 @@ function _M.Login()
     return ngx.redirect("/login.html")
   end
 
-  local client = GenericObjectPool:connection(UserServiceClient, "172.18.0.1", 10005)
+  local client = GenericObjectPool:connection(UserServiceClient, "#USER-SERVICE#", 10005)
 
   local status, ret = pcall(client.Login, client, req_id,
       args.username, args.password, carrier)

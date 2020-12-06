@@ -59,7 +59,7 @@ function _M.GetFollowee()
     ngx.exit(ngx.HTTP_OK)
   else
     local client = GenericObjectPool:connection(
-      SocialGraphServiceClient, "172.18.0.1", 10000)
+      SocialGraphServiceClient, "#SOCIAL-GRAPH-SERVICE#", 10000)
     local status, ret = pcall(client.GetFollowees, client, req_id,
         user_id, carrier)
     GenericObjectPool:returnConnection(client)

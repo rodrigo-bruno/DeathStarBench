@@ -101,7 +101,7 @@ function _M.ReadUserTimeline()
     ngx.exit(ngx.HTTP_UNAUTHORIZED)
   else
     local client = GenericObjectPool:connection(
-        UserTimelineServiceClient, "172.18.0.1", 10003)
+        UserTimelineServiceClient, "#USER-TIMELINE-SERVICE#", 10003)
     local status, ret = pcall(client.ReadUserTimeline, client, req_id,
         user_id, tonumber(args.start), tonumber(args.stop), carrier)
     GenericObjectPool:returnConnection(client)
