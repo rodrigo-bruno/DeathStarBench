@@ -17,6 +17,8 @@ services:
       - 10000:9090
     restart: always
     entrypoint: SocialGraphService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   social-graph-mongodb:
     image: mongo
@@ -24,6 +26,8 @@ services:
     ports:
       - 27018:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   social-graph-redis:
     image: redis
@@ -31,6 +35,8 @@ services:
     ports:
       - 6380:6379
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   write-home-timeline-service:
     image: yg397/social-network-microservices
@@ -39,6 +45,8 @@ services:
     entrypoint: WriteHomeTimelineService
     depends_on:
       - write-home-timeline-rabbitmq
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   write-home-timeline-rabbitmq:
     image: rabbitmq
@@ -50,6 +58,8 @@ services:
       - 15672:15672
       - 5672:5672
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   home-timeline-redis:
     image: redis
@@ -57,6 +67,8 @@ services:
     ports:
       - 6381:6379
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   compose-post-service:
     image: yg397/social-network-microservices
@@ -67,6 +79,8 @@ services:
     entrypoint: ComposePostService
     depends_on:
       - write-home-timeline-rabbitmq
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   compose-post-redis:
     image: redis
@@ -74,6 +88,8 @@ services:
     ports:
       - 6382:6379
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   post-storage-service:
     image: yg397/social-network-microservices
@@ -82,6 +98,8 @@ services:
       - 10002:9090
     restart: always
     entrypoint: PostStorageService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   post-storage-memcached:
     image: memcached
@@ -89,6 +107,8 @@ services:
     ports:
       - 11212:11211
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   post-storage-mongodb:
     image: mongo
@@ -96,6 +116,8 @@ services:
     ports:
       - 27019:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-timeline-service:
     image: yg397/social-network-microservices
@@ -104,6 +126,8 @@ services:
       - 10003:9090
     restart: always
     entrypoint: UserTimelineService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-timeline-redis:
     image: redis
@@ -111,6 +135,8 @@ services:
     ports:
       - 6383:6379
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-timeline-mongodb:
     image: mongo
@@ -118,6 +144,8 @@ services:
     ports:
       - 27020:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   url-shorten-service:
     image: yg397/social-network-microservices
@@ -126,6 +154,8 @@ services:
       - 10004:9090
     restart: always
     entrypoint: UrlShortenService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   url-shorten-memcached:
     image: memcached
@@ -133,6 +163,8 @@ services:
     ports:
       - 11213:11211
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   url-shorten-mongodb:
     image: mongo
@@ -140,6 +172,9 @@ services:
     ports:
       - 27021:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
+
 
   user-service:
     image: yg397/social-network-microservices
@@ -148,6 +183,8 @@ services:
       - 10005:9090
     restart: always
     entrypoint: UserService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-memcached:
     image: memcached
@@ -155,6 +192,8 @@ services:
     ports:
       - 11214:11211
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-mongodb:
     image: mongo
@@ -162,6 +201,8 @@ services:
     ports:
       - 27023:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   media-service:
     image: yg397/social-network-microservices
@@ -170,6 +211,8 @@ services:
       - 10006:9090
     restart: always
     entrypoint: MediaService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   media-memcached:
     image: memcached
@@ -177,6 +220,8 @@ services:
     ports:
       - 11215:11211
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   media-mongodb:
     image: mongo
@@ -184,6 +229,8 @@ services:
     ports:
       - 27024:27017
     restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   text-service:
     image: yg397/social-network-microservices
@@ -192,6 +239,8 @@ services:
       - 10007:9090
     restart: always
     entrypoint: TextService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   unique-id-service:
     image: yg397/social-network-microservices
@@ -200,6 +249,8 @@ services:
       - 10008:9090
     restart: always
     entrypoint: UniqueIdService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   user-mention-service:
     image: yg397/social-network-microservices
@@ -208,6 +259,8 @@ services:
       - 10009:9090
     restart: always
     entrypoint: UserMentionService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   home-timeline-service:
     image: yg397/social-network-microservices
@@ -216,6 +269,8 @@ services:
       - 10010:9090
     restart: always
     entrypoint: HomeTimelineService
+    volumes:
+      - /etc/hosts:/etc/hosts
 
   nginx-thrift:
     image: yg397/openresty-thrift:xenial
@@ -224,6 +279,7 @@ services:
       - 8080:8080
     restart: always
     volumes:
+      - /etc/hosts:/etc/hosts
       - ./nginx-web-server/lua-scripts:/usr/local/openresty/nginx/lua-scripts
       - ./nginx-web-server/pages:/usr/local/openresty/nginx/pages
       - ./nginx-web-server/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
@@ -237,6 +293,7 @@ services:
       - 8081:8080
     restart: always
     volumes:
+      - /etc/hosts:/etc/hosts
       - ./media-frontend/lua-scripts:/usr/local/openresty/nginx/lua-scripts
       - ./media-frontend/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
 
@@ -254,3 +311,5 @@ services:
     restart: always
     environment:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+    volumes:
+      - /etc/hosts:/etc/hosts
