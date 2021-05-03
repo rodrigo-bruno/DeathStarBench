@@ -24,7 +24,7 @@ function _M.Follow()
   local post = ngx.req.get_post_args()
 
   local client = GenericObjectPool:connection(
-      SocialGraphServiceClient, "#SOCIAL-GRAPH-SERVICE#", 10000)
+      SocialGraphServiceClient, "social-graph-service", 10000)
 
   -- -- new start -- 
   -- if (_StrIsEmpty(ngx.var.cookie_login_token)) then

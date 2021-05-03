@@ -71,7 +71,7 @@ function _M.ReadUserTimeline()
 
 
   local client = GenericObjectPool:connection(
-      UserTimelineServiceClient, "#USER-TIMELINE-SERVICE#", 10003)
+      UserTimelineServiceClient, "user-timeline-service", 10003)
   local status, ret = pcall(client.ReadUserTimeline, client, req_id,
       tonumber(args.user_id), tonumber(args.start), tonumber(args.stop), carrier)
   GenericObjectPool:returnConnection(client)

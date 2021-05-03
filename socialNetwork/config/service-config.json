@@ -1,103 +1,103 @@
 {
   "secret": "secret",
   "social-graph-service": {
-    "addr": "#SOCIAL-GRAPH-SERVICE#",
+    "addr": "social-graph-service",
     "port": 10000
   },
   "social-graph-mongodb": {
-    "addr": "#SOCIAL-GRAPH-MONGODB#",
+    "addr": "social-graph-mongodb",
     "port": 27018
   },
   "social-graph-redis": {
-    "addr": "#SOCIAL-GRAPH-REDIS#",
+    "addr": "social-graph-redis",
     "port": 6380
   },
   "write-home-timeline-service": {
-    "addr": "#WRITE-HOME-TIMELINE-SERVICE#",
+    "addr": "write-home-timeline-service",
     "port": 9090
   },
   "write-home-timeline-rabbitmq": {
-    "addr": "#WRITE-HOME-TIMELINE-RABBITMQ#",
+    "addr": "write-home-timeline-rabbitmq",
     "port": 5672
   },
   "home-timeline-redis": {
-    "addr": "#HOME-TIMELINE-REDIS#",
+    "addr": "home-timeline-redis",
     "port": 6381
   },
   "compose-post-service": {
-    "addr": "#COMPOSE-POST-SERVICE#",
+    "addr": "compose-post-service",
     "port": 10001
   },
   "compose-post-redis": {
-    "addr": "#COMPOSE-POST-REDIS#",
+    "addr": "compose-post-redis",
     "port": 6382
   },
   "user-timeline-service": {
-    "addr": "#USER-TIMELINE-SERVICE#",
+    "addr": "user-timeline-service",
     "port": 10003
   },
   "user-timeline-mongodb": {
-    "addr": "#USER-TIMELINE-MONGODB#",
+    "addr": "user-timeline-mongodb",
     "port": 27020
   },
   "user-timeline-redis": {
-    "addr": "#USER-TIMELINE-REDIS#",
+    "addr": "user-timeline-redis",
     "port": 6383
   },
   "post-storage-service": {
-    "addr": "#POST-STORAGE-SERVICE#",
+    "addr": "post-storage-service",
     "port": 10002
   },
   "post-storage-mongodb": {
-    "addr": "#POST-STORAGE-MONGODB#",
+    "addr": "post-storage-mongodb",
     "port": 27019
   },
   "post-storage-memcached": {
-    "addr": "#POST-STORAGE-MEMCACHED#",
+    "addr": "post-storage-memcached",
     "port": 11212
   },
   "unique-id-service": {
-    "addr": "#UNIQUE-ID-SERVICE#",
+    "addr": "unique-id-service",
     "port": 10008
   },
   "media-service": {
-    "addr": "#MEDIA-SERVICE#",
+    "addr": "media-service",
     "port": 10006
   },
   "text-service": {
-    "addr": "#TEXT-SERVICE#",
+    "addr": "media-service",
     "port": 10007
   },
   "user-mention-service": {
-    "addr": "#USER-MENTION-SERVICE#",
+    "addr": "user-mention-service",
     "port": 10009
   },
   "url-shorten-service": {
-    "addr": "#URL-SHORTEN-SERVICE#",
+    "addr": "url-shorten-service",
     "port": 10004
   },
   "url-shorten-memcached": {
-    "addr": "#URL-SHORTEN-MEMCACHED#",
+    "addr": "url-shorten-memcached",
     "port": 11213
   },
   "url-shorten-mongodb": {
-    "addr": "#URL-SHORTEN-MONGODB#",
+    "addr": "url-shorten-mongodb",
     "port": 27021
   },
   "user-service": {
-    "addr": "#USER-SERVICE#",
+    "addr": "user-service",
     "port": 10005
   },
   "user-memcached": {
-    "addr": "#USER-MEMCACHED#",
+    "addr": "user-memcached",
     "port": 11214
   },
   "user-mongodb": {
-    "addr": "#USER-MONGODB#",
+    "addr": "user-mongodb",
     "port": 27023
   },
   "home-timeline-service": {
-    "addr": "#HOME-TIMELINE-SERVICE#",
+    "addr": "home-timeline-service",
     "port": 10010
   }
 }
