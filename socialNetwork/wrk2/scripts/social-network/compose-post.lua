@@ -1,5 +1,4 @@
 require "socket"
-math.randomseed(socket.gettime()*1000)
 math.random(); math.random(); math.random()
 
 local charset = {'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's',
@@ -62,7 +61,7 @@ request = function()
   media_types = media_types:sub(1, #media_types - 1) .. "]"
 
   local method = "POST"
-  local path = "http://localhost:8080/wrk2-api/post/compose"
+  local path = "http://nginx-thrift:8080/wrk2-api/post/compose"
   local headers = {}
   local body
   headers["Content-Type"] = "application/x-www-form-urlencoded"

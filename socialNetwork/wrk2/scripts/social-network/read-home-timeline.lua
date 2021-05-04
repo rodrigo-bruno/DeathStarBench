@@ -1,6 +1,4 @@
 require "socket"
-local time = socket.gettime()*1000
-math.randomseed(time)
 math.random(); math.random(); math.random()
 
 request = function()
@@ -12,7 +10,7 @@ request = function()
   local method = "GET"
   local headers = {}
   headers["Content-Type"] = "application/x-www-form-urlencoded"
-  local path = "http://localhost:8080/wrk2-api/home-timeline/read?" .. args
+  local path = "http://nginx-thrift:8080/wrk2-api/home-timeline/read?" .. args
   return wrk.format(method, path, headers, nil)
 
 end
