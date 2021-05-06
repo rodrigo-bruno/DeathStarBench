@@ -11,10 +11,11 @@ services:
 #      - /etc/resolv.conf:/etc/resolv.conf
 
   social-graph-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: social-graph-service
-    ports:
-      - 10000:9090
+    network_mode: "host"
+#    ports:
+#      - 10000:9090
     restart: always
     entrypoint: SocialGraphService
     volumes:
@@ -23,8 +24,9 @@ services:
   social-graph-mongodb:
     image: mongo
 #    hostname: social-graph-mongodb
-    ports:
-      - 27018:27017
+    network_mode: "host"
+#    ports:
+#      - 27018:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -32,15 +34,17 @@ services:
   social-graph-redis:
     image: redis
 #    hostname: social-graph-redis
-    ports:
-      - 6380:6379
+    network_mode: "host"
+#    ports:
+#      - 6380:6379
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   write-home-timeline-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: write-home-timeline-service
+    network_mode: "host"
     restart: always
     entrypoint: WriteHomeTimelineService
     depends_on:
@@ -51,12 +55,13 @@ services:
   write-home-timeline-rabbitmq:
     image: rabbitmq
 #    hostname: write-home-timeline-rabbitmq
+    network_mode: "host"
     environment:
       RABBITMQ_ERLANG_COOKIE: "WRITE-HOME-TIMELINE-RABBITMQ"
       RABBITMQ_DEFAULT_VHOST: "/"
-    ports:
-      - 15672:15672
-      - 5672:5672
+#    ports:
+#      - 15672:15672
+#      - 5672:5672
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -64,17 +69,19 @@ services:
   home-timeline-redis:
     image: redis
 #    hostname: home-timeline-redis
-    ports:
-      - 6381:6379
+    network_mode: "host"
+#    ports:
+#      - 6381:6379
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   compose-post-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: compose-post-service
-    ports:
-      - 10001:9090
+    network_mode: "host"
+#    ports:
+#      - 10001:9090
     restart: always
     entrypoint: ComposePostService
     depends_on:
@@ -85,15 +92,17 @@ services:
   compose-post-redis:
     image: redis
 #    hostname: compose-post-redis
-    ports:
-      - 6382:6379
+    network_mode: "host"
+#    ports:
+#      - 6382:6379
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   post-storage-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: post-storage-service
+    network_mode: "host"
     ports:
       - 10002:9090
     restart: always
@@ -104,8 +113,9 @@ services:
   post-storage-memcached:
     image: memcached
 #    hostname: post-storage-memcached
-    ports:
-      - 11212:11211
+    network_mode: "host"
+#    ports:
+#      - 11212:11211
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -113,17 +123,19 @@ services:
   post-storage-mongodb:
     image: mongo
 #    hostname: post-storage-mongodb
-    ports:
-      - 27019:27017
+    network_mode: "host"
+#    ports:
+#      - 27019:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   user-timeline-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: user-timeline-service
-    ports:
-      - 10003:9090
+    network_mode: "host"
+#    ports:
+#      - 10003:9090
     restart: always
     entrypoint: UserTimelineService
     volumes:
@@ -132,8 +144,9 @@ services:
   user-timeline-redis:
     image: redis
 #    hostname: user-timeline-redis
-    ports:
-      - 6383:6379
+    network_mode: "host"
+#    ports:
+#      - 6383:6379
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -141,17 +154,19 @@ services:
   user-timeline-mongodb:
     image: mongo
 #    hostname: user-timeline-mongodb
-    ports:
-      - 27020:27017
+    network_mode: "host"
+#    ports:
+#      - 27020:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   url-shorten-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: url-shorten-service
-    ports:
-      - 10004:9090
+    network_mode: "host"
+#    ports:
+#      - 10004:9090
     restart: always
     entrypoint: UrlShortenService
     volumes:
@@ -160,8 +175,9 @@ services:
   url-shorten-memcached:
     image: memcached
 #    hostname: url-shorten-memcached
-    ports:
-      - 11213:11211
+    network_mode: "host"
+#    ports:
+#      - 11213:11211
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -169,18 +185,20 @@ services:
   url-shorten-mongodb:
     image: mongo
 #    hostname: url-shorten-mongodb
-    ports:
-      - 27021:27017
+    network_mode: "host"
+#    ports:
+#      - 27021:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
 
   user-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: user-service
-    ports:
-      - 10005:9090
+    network_mode: "host"
+#    ports:
+#      - 10005:9090
     restart: always
     entrypoint: UserService
     volumes:
@@ -189,8 +207,9 @@ services:
   user-memcached:
     image: memcached
 #    hostname: user-memcached
-    ports:
-      - 11214:11211
+    network_mode: "host"
+#    ports:
+#      - 11214:11211
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -198,17 +217,19 @@ services:
   user-mongodb:
     image: mongo
 #    hostname: user-mongodb
-    ports:
-      - 27023:27017
+    network_mode: "host"
+#    ports:
+#      - 27023:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   media-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: media-service
-    ports:
-      - 10006:9090
+    network_mode: "host"
+#    ports:
+#      - 10006:9090
     restart: always
     entrypoint: MediaService
     volumes:
@@ -217,8 +238,9 @@ services:
   media-memcached:
     image: memcached
 #    hostname: media-memcached
-    ports:
-      - 11215:11211
+    network_mode: "host"
+#    ports:
+#      - 11215:11211
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
@@ -226,47 +248,52 @@ services:
   media-mongodb:
     image: mongo
 #    hostname: media-mongodb
-    ports:
-      - 27024:27017
+    network_mode: "host"
+#    ports:
+#      - 27024:27017
     restart: always
     volumes:
       - /etc/hosts:/etc/hosts
 
   text-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: text-service
-    ports:
-      - 10007:9090
+    network_mode: "host"
+#    ports:
+#      - 10007:9090
     restart: always
     entrypoint: TextService
     volumes:
       - /etc/hosts:/etc/hosts
 
   unique-id-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: unique-id-service
-    ports:
-      - 10008:9090
+    network_mode: "host"
+#    ports:
+#      - 10008:9090
     restart: always
     entrypoint: UniqueIdService
     volumes:
       - /etc/hosts:/etc/hosts
 
   user-mention-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: user-mention-service
-    ports:
-      - 10009:9090
+    network_mode: "host"
+#    ports:
+#      - 10009:9090
     restart: always
     entrypoint: UserMentionService
     volumes:
       - /etc/hosts:/etc/hosts
 
   home-timeline-service:
-    image: yg397/social-network-microservices
+    image: yg397/social-network-microservices:root_cause-del
 #    hostname: home-timeline-service
-    ports:
-      - 10010:9090
+    network_mode: "host"
+#    ports:
+#      - 10010:9090
     restart: always
     entrypoint: HomeTimelineService
     volumes:
@@ -275,6 +302,7 @@ services:
   nginx-thrift:
     image: yg397/openresty-thrift:xenial
 #    hostname: nginx-thrift
+    network_mode: "host"
     ports:
       - 8080:8080
     restart: always
@@ -289,6 +317,7 @@ services:
   media-frontend:
     image: yg397/media-frontend:xenial
 #    hostname: media-frontend
+    network_mode: "host"
     ports:
       - 8081:8080
     restart: always
@@ -300,14 +329,15 @@ services:
   jaeger:
     image: jaegertracing/all-in-one:latest
 #    hostname: jaeger
+    network_mode: "host"
     ports:
-      - 5775:5775/udp
-      - 6831:6831/udp
-      - 6832:6832/udp
-      - 5778:5778
+#      - 5775:5775/udp
+#      - 6831:6831/udp
+#      - 6832:6832/udp
+#      - 5778:5778
       - 16686:16686
-      - 14268:14268
-      - 9411:9411
+#      - 14268:14268
+#      - 9411:9411
     restart: always
     environment:
       - COLLECTOR_ZIPKIN_HTTP_PORT=9411

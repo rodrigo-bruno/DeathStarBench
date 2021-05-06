@@ -2,15 +2,15 @@
   "secret": "secret",
   "social-graph-service": {
     "addr": "social-graph-service",
-    "port": 10000
+    "port": 9090
   },
   "social-graph-mongodb": {
     "addr": "social-graph-mongodb",
-    "port": 27018
+    "port": 27017
   },
   "social-graph-redis": {
     "addr": "social-graph-redis",
-    "port": 6380
+    "port": 6379
   },
   "write-home-timeline-service": {
     "addr": "write-home-timeline-service",
@@ -22,82 +22,82 @@
   },
   "home-timeline-redis": {
     "addr": "home-timeline-redis",
-    "port": 6381
+    "port": 6379
   },
   "compose-post-service": {
     "addr": "compose-post-service",
-    "port": 10001
+    "port": 9090
   },
   "compose-post-redis": {
     "addr": "compose-post-redis",
-    "port": 6382
+    "port": 6379
   },
   "user-timeline-service": {
     "addr": "user-timeline-service",
-    "port": 10003
+    "port": 9090
   },
   "user-timeline-mongodb": {
     "addr": "user-timeline-mongodb",
-    "port": 27020
+    "port": 27017
   },
   "user-timeline-redis": {
     "addr": "user-timeline-redis",
-    "port": 6383
+    "port": 6379
   },
   "post-storage-service": {
     "addr": "post-storage-service",
-    "port": 10002
+    "port": 9090
   },
   "post-storage-mongodb": {
     "addr": "post-storage-mongodb",
-    "port": 27019
+    "port": 27017
   },
   "post-storage-memcached": {
     "addr": "post-storage-memcached",
-    "port": 11212
+    "port": 11211
   },
   "unique-id-service": {
     "addr": "unique-id-service",
-    "port": 10008
+    "port": 9090
   },
   "media-service": {
     "addr": "media-service",
-    "port": 10006
+    "port": 9090
   },
   "text-service": {
     "addr": "media-service",
-    "port": 10007
+    "port": 9090
   },
   "user-mention-service": {
     "addr": "user-mention-service",
-    "port": 10009
+    "port": 9090
   },
   "url-shorten-service": {
     "addr": "url-shorten-service",
-    "port": 10004
+    "port": 9090
   },
   "url-shorten-memcached": {
     "addr": "url-shorten-memcached",
-    "port": 11213
+    "port": 11211
   },
   "url-shorten-mongodb": {
     "addr": "url-shorten-mongodb",
-    "port": 27021
+    "port": 27017
   },
   "user-service": {
     "addr": "user-service",
-    "port": 10005
+    "port": 9090
   },
   "user-memcached": {
     "addr": "user-memcached",
-    "port": 11214
+    "port": 11211
   },
   "user-mongodb": {
     "addr": "user-mongodb",
-    "port": 27023
+    "port": 27017
   },
   "home-timeline-service": {
     "addr": "home-timeline-service",
-    "port": 10010
+    "port": 9090
   }
 }
