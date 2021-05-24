@@ -1,6 +1,7 @@
 import aiohttp
 import asyncio
 import sys
+import time
 
 async def upload_register(session, addr, user):
   payload = {'first_name': 'first_name_' + user, 'last_name': 'last_name_' + user,
@@ -25,15 +26,15 @@ def getEdges(file):
 async def register(addr, nodes):
   idx = 0
   tasks = []
-  conn = aiohttp.TCPConnector(limit=200)
+  conn = aiohttp.TCPConnector(limit=1)
   async with aiohttp.ClientSession(connector=conn) as session:
     for i in range(1, 12):
       task = asyncio.ensure_future(upload_register(session, addr, str(i)))
       tasks.append(task)
       idx += 1
-      if idx % 200 == 0:
-        resps = await asyncio.gather(*tasks)
-        print("Registered", idx, "users successfully")
+      resps = await asyncio.gather(*tasks)
+      print("Registered user number ", idx, " successfully")
+      time.sleep(1)
     resps = await asyncio.gather(*tasks)
     print("Registered", idx, "users successfully")
 
