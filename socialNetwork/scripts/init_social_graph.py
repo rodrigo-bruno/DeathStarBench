@@ -1,6 +1,7 @@
 import aiohttp
 import asyncio
 import sys
+import time
 
 async def upload_follow(session, addr, user_0, user_1):
   payload = {'user_name': 'username_' + user_0, 'followee_name': 'username_' + user_1}
@@ -29,15 +30,17 @@ def getEdges(file):
 async def register(addr, nodes):
   idx = 0
   tasks = []
-  conn = aiohttp.TCPConnector(limit=200)
+  start = time.time()
+  conn = aiohttp.TCPConnector(limit=conns)
   async with aiohttp.ClientSession(connector=conn) as session:
     for i in range(1, nodes + 1):
       task = asyncio.ensure_future(upload_register(session, addr, str(i)))
       tasks.append(task)
       idx += 1
-      if idx % 200 == 0:
+      if idx % 100 == 0:
         resps = await asyncio.gather(*tasks)
-        print("Registered", idx, "users successfully")
+        print("Registered", idx, "users successfully (", 200 / (time.time() - start), "ops/s)")
+        start = time.time()
     resps = await asyncio.gather(*tasks)
     print("Registered", idx, "users successfully")
 
@@ -45,7 +48,8 @@ async def register(addr, nodes):
 async def follow(addr, edges):
   idx = 0
   tasks = []
-  conn = aiohttp.TCPConnector(limit=200)
+  start = time.time()
+  conn = aiohttp.TCPConnector(limit=conns)
   async with aiohttp.ClientSession(connector=conn) as session:
     for edge in edges:
       task = asyncio.ensure_future(upload_follow(session, addr, edge[0], edge[1]))
@@ -53,22 +57,27 @@ async def follow(addr, edges):
       task = asyncio.ensure_future(upload_follow(session, addr, edge[1], edge[0]))
       tasks.append(task)
       idx += 1
-      if idx % 200 == 0:
+      if idx % 500 == 0:
         resps = await asyncio.gather(*tasks)
-        print(idx, "edges finished")
+        print(idx, "edges finished (", 500 / (time.time() - start), "ops/s)")
+        start = time.time()
     resps = await asyncio.gather(*tasks)
     print(idx, "edges finished")
 
 if __name__ == '__main__':
-  if len(sys.argv) < 2:
-    filename = "datasets/social-graph/socfb-Reed98/socfb-Reed98.mtx"
-  else:
-    filename = sys.argv[1]
+  if len(sys.argv) != 4:
+    print("Syntax: python scripts/init_social_graph.py <url> <connections> <dataset>")
+    sys.exit(1)
+
+  addr = sys.argv[1]
+  conns = int(sys.argv[2])
+  filename = sys.argv[3]
+
   with open(filename, 'r') as file:
     nodes = getNodes(file)
     edges = getEdges(file)
 
-  addr = "http://nginx-thrift:8080"
+  print("Using", conns, "concurrent connections.")
   loop = asyncio.get_event_loop()
   future = asyncio.ensure_future(register(addr, nodes))
   loop.run_until_complete(future)
